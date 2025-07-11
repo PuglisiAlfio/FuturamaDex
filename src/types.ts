@@ -18,4 +18,5 @@ export interface FuturamaCharacter {
   homePlanet: string;   // Pianeta d'origine
   occupation: string;   // Professione o ruolo
   sayings: string[];    // Array di citazioni del personaggio
+  gender: string;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCharacters } from "../api/futuramaApi.ts"; // La funzione che chiama l’API
 import type { FuturamaCharacter } from "../types.ts";
+import CharacterModal from "../components/CharacterModal.tsx";
 import Card from "../components/Card.tsx";
 export default function Home() {
   // Stato per salvare i personaggi
@@ -11,6 +12,11 @@ export default function Home() {
 
   // Stato per eventuali errori nella chiamata
   const [error, setError] = useState("");
+
+  // 🔸 Nuovi stati per gestire la modale
+  const [selectedCharacter, setSelectedCharacter] =
+    useState<FuturamaCharacter | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
   // useEffect: eseguito al primo montaggio del componente
   useEffect(() => {
@@ -38,7 +44,23 @@ export default function Home() {
   // Altrimenti mostriamo la lista di personaggi (che al momento saranno soltanto delle card bianche)
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
-      <Card characters={characters} />
+      <Card
+        characters={characters}
+        onSelectCharacter={(char) => {
+          setSelectedCharacter(char);
+          setShowModal(true);
+        }}
+      />
+      {/* Mostriamo la modale se necessario */}
+      {showModal && selectedCharacter && (
+        <CharacterModal
+          character={selectedCharacter}
+          onClose={() => {
+            setSelectedCharacter(null);
+            setShowModal(false);
+          }}
+        />
+      )}
     </div>
   );
 }
