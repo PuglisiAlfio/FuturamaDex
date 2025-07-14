@@ -3,6 +3,7 @@ import { getCharacters } from "../api/futuramaApi.ts"; // La funzione che chiama
 import type { FuturamaCharacter } from "../types.ts";
 import CharacterModal from "../components/CharacterModal.tsx";
 import Card from "../components/Card.tsx";
+
 export default function Home() {
   // Stato per salvare i personaggi
   const [characters, setCharacters] = useState<FuturamaCharacter[]>([]);
