@@ -41,10 +41,10 @@ FuturamaDex è una webapp in **React + TypeScript** che consente di esplorare i 
 - Creata pagina `Favorites.tsx` per mostrare solo i personaggi preferiti
 - Layout responsive anche nella pagina preferiti
 - Possibilità di rimuovere i preferiti direttamente dalla pagina
+- Aggiunta funzionalità di ricerca o filtro
 
 ---
 
 ## Prossimi Step
 
 - Miglioramento UI/UX delle card (hover effects, info brevi)
-- Aggiunta funzionalità di ricerca o filtro

@@ -3,6 +3,7 @@ import { getCharacters } from "../api/futuramaApi.ts"; // La funzione che chiama
 import type { FuturamaCharacter } from "../types.ts";
 import CharacterModal from "../components/CharacterModal.tsx";
 import Card from "../components/Card.tsx";
+import SearchBar from "../components/SearchBar.tsx";
 
 export default function Home() {
   // Stato per salvare i personaggi
@@ -43,7 +44,8 @@ export default function Home() {
   if (error) return <p>{error}</p>;
 
   // Altrimenti mostriamo la lista di personaggi (che al momento saranno soltanto delle card bianche)
-  return (
+  return (<>
+  <SearchBar characters={characters}/>
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
       <Card
         characters={characters}
@@ -63,5 +65,6 @@ export default function Home() {
         />
       )}
     </div>
+    </>
   );
 }
