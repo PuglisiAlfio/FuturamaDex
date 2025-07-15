@@ -9,14 +9,20 @@ type Props = {
 export default function SearchBar({ characters }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCharacter, setSelectedCharacter] = useState<FuturamaCharacter | null>(null);
+  const [selectedCharacter, setSelectedCharacter] =
+    useState<FuturamaCharacter | null>(null);
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
 
-  const filtered = characters.filter((char) => {
-    const fullName = `${char.name.first} ${char.name.last}`.toLowerCase();
-    return fullName.includes(searchTerm.toLowerCase());
-  });
+  const filtered = characters.filter(char => {
+  if (searchTerm === '') return true;
+
+  const firstName = char.name.first.toLowerCase();
+  const lastName = char.name.last.toLowerCase();
+  const search = searchTerm.toLowerCase();
+
+  return firstName.startsWith(search) || lastName.startsWith(search);
+})
 
   const openModal = (char: FuturamaCharacter) => {
     setSelectedCharacter(char);
