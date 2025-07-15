@@ -45,7 +45,7 @@ export default function Card({ characters, onSelectCharacter }: CardProps) {
                 addToFavorites(char);
               }
             }}
-            className={`absolute top-2 right-2 text-2xl ${
+            className={`absolute top-2 right-2 text-2xl cursor-pointer ${
               isFavorite(char.id) ? "text-yellow-400" : "text-gray-300"
             } hover:scale-110 transition`}
             aria-label="toggle favorite"
