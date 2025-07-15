@@ -56,7 +56,7 @@ export default function CharacterModal({ character, onClose }: Props) {
           <h2 className="text-xl font-bold mt-4">{`${character.name.first} ${character.name.last}`}</h2>
           <p className="text-gray-600 italic mb-2">{character.sayings[0]}</p>
           <p className="text-sm text-gray-500">
-            {character.species} – {character.occupation}
+            {character.name.first} {character.name.last}: {character.species} – {character.occupation}
           </p>
         </motion.div>
       </motion.div>
