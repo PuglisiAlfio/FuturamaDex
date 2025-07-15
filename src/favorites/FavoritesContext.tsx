@@ -14,7 +14,15 @@ export const FavoriteContext = createContext<FavoritesContextType | null>(null);
 
 // Provider per avvolgere l'app
 export const FavoriteProvider = ({ children }: { children: ReactNode }) => {
-  const [favorites, setFavorites] = useState<FuturamaCharacter[]>([]);
+  const [favorites, setFavorites] = useState<FuturamaCharacter[]>(() => {
+    try {
+      const saved = localStorage.getItem("favorites");
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.error("Errore nel parsing dei preferiti da localStorage:", error);
+      return [];
+    }
+  });
 
   // Carica i preferiti da localStorage al primo render
   useEffect(() => {
@@ -39,7 +47,9 @@ export const FavoriteProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <FavoriteContext.Provider value={{ favorites, addToFavorites, removeFromFavorites }}>
+    <FavoriteContext.Provider
+      value={{ favorites, addToFavorites, removeFromFavorites }}
+    >
       {children}
     </FavoriteContext.Provider>
   );

@@ -16,7 +16,7 @@ export default function Favorites() {
           {favCtx.favorites.map((char) => (
             <li
               key={char.id}
-              className="bg-white p-4 rounded-xl shadow relative cursor-pointer hover:shadow-lg transition"
+              className="bg-white p-4 rounded-xl shadow relative hover:shadow-lg transition"
             >
               <button
                 onClick={() => favCtx.removeFromFavorites(char.id)}
