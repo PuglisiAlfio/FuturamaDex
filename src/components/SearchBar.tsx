@@ -104,7 +104,7 @@ export default function SearchBar({ characters }: Props) {
               <img
                 src={char.images.main}
                 alt={`${char.name.first} ${char.name.last}`}
-                className="rounded-full h-22 w-16 bg-cover bg-center"
+                className="h-16 w-16 bg-cover bg-center object-contain"
               />
               <h3 className="font-bold text-sm">
                 {char.name.first} {char.name.last}
