@@ -20,7 +20,7 @@ export default function Favorites() {
             >
               <button
                 onClick={() => favCtx.removeFromFavorites(char.id)}
-                className="text-red-500 hover:text-red-700 font-bold absolute top-2 right-2 cursor-pointer"
+                className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-3xl font-bold"
                 aria-label={`Rimuovi ${char.name.first} dai preferiti`}
               >
                 ×

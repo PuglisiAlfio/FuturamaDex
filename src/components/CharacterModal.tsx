@@ -1,6 +1,8 @@
 import type { FuturamaCharacter } from "../types";
 import { motion, AnimatePresence } from "framer-motion";
 
+import FavoriteButton from "./FavoriteButton";
+
 type Props = {
   character: FuturamaCharacter;
   onClose: () => void;
@@ -34,30 +36,37 @@ export default function CharacterModal({ character, onClose }: Props) {
       >
         {/* Blocchiamo la propagazione del click per non chiudere cliccando il contenuto */}
         <motion.div
-          className="bg-white rounded-xl p-6 relative max-w-sm w-full shadow-lg"
+          className="bg-white rounded-xl p-6 relative max-w-sm w-full shadow-lg flex flex-row items-start"
           onClick={(e) => e.stopPropagation()}
           variants={modalVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
         >
+          <div className="mr-4 flex-shrink-0">
+            <FavoriteButton character={character} className="text-4xl" />
+          </div>
+
+          <div className="flex-1">
+            <img
+              src={character.images.main}
+              alt={character.name.first}
+              className="w-full h-48 object-contain"
+            />
+            <h2 className="text-xl font-bold mt-4">{`${character.name.first} ${character.name.last}`}</h2>
+            <p className="text-gray-600 italic mb-2">{character.sayings[0]}</p>
+            <p className="text-sm text-gray-500">
+              {character.name.first} {character.name.last}: {character.species}{" "}
+              – {character.occupation}
+            </p>
+          </div>
           <button
             onClick={onClose}
-            className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-3xl font-bold"
+            className="top-2 right-2 text-gray-700 hover:text-red-500 text-3xl font-bold"
             aria-label="Chiudi Modal"
           >
             &times;
           </button>
-          <img
-            src={character.images.main}
-            alt={character.name.first}
-            className="w-full h-48 object-contain"
-          />
-          <h2 className="text-xl font-bold mt-4">{`${character.name.first} ${character.name.last}`}</h2>
-          <p className="text-gray-600 italic mb-2">{character.sayings[0]}</p>
-          <p className="text-sm text-gray-500">
-            {character.name.first} {character.name.last}: {character.species} – {character.occupation}
-          </p>
         </motion.div>
       </motion.div>
     </AnimatePresence>

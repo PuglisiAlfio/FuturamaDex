@@ -1,22 +1,12 @@
-import { useContext } from "react";
-import { FavoriteContext } from "../favorites/FavoritesContext";
+import FavoriteButton from "./FavoriteButton";
 import type { FuturamaCharacter } from "../types";
 
-// Tipo dei props accettati da Card
 type CardProps = {
   characters: FuturamaCharacter[];
   onSelectCharacter: (char: FuturamaCharacter) => void;
 };
 
 export default function Card({ characters, onSelectCharacter }: CardProps) {
-  const favCtx = useContext(FavoriteContext);
-
-  if (!favCtx) return null; // fallback in caso il context non sia disponibile
-
-  const { favorites, addToFavorites, removeFromFavorites } = favCtx;
-
-  const isFavorite = (id: number) => favorites.some((char) => char.id === id);
-
   return (
     <>
       {characters.map((char) => (
@@ -35,23 +25,9 @@ export default function Card({ characters, onSelectCharacter }: CardProps) {
             {char.species} – {char.occupation}
           </p>
 
-          {/* ⭐ Icona per gestire i preferiti */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation(); // impedisce apertura della modale
-              if (isFavorite(char.id)) {
-                removeFromFavorites(char.id);
-              } else {
-                addToFavorites(char);
-              }
-            }}
-            className={`absolute top-2 right-2 text-2xl cursor-pointer ${
-              isFavorite(char.id) ? "text-yellow-400" : "text-gray-300"
-            } hover:scale-110 transition`}
-            aria-label="toggle favorite"
-          >
-            ★
-          </button>
+          <div className="absolute top-2 right-2">
+            <FavoriteButton character={char} />
+          </div>
         </div>
       ))}
     </>
