@@ -1,5 +1,5 @@
-import FavoriteButton from "./FavoriteButton";
 import type { FuturamaCharacter } from "../types";
+import FavoriteButton from "./FavoriteButton";
 
 type CardProps = {
   characters: FuturamaCharacter[];
@@ -25,9 +25,10 @@ export default function Card({ characters, onSelectCharacter }: CardProps) {
             {char.species} – {char.occupation}
           </p>
 
-          <div className="absolute top-2 right-2">
-            <FavoriteButton character={char} />
-          </div>
+          <FavoriteButton
+            character={char}
+            className="absolute top-2 right-2 text-2xl"
+          />
         </div>
       ))}
     </>

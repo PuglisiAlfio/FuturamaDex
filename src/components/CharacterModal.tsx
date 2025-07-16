@@ -1,72 +1,57 @@
-import type { FuturamaCharacter } from "../types";
 import { motion, AnimatePresence } from "framer-motion";
-
+import type { FuturamaCharacter } from "../types";
 import FavoriteButton from "./FavoriteButton";
 
 type Props = {
   character: FuturamaCharacter;
   onClose: () => void;
 };
-
-// Varianti per animazioni del contenuto del modal
+// Varianti per le animazioni del modal (Framer Motion)
 const modalVariants = {
-  hidden: { opacity: 0, y: "-50%", scale: 0.9 },
-  visible: { opacity: 1, y: "0%", scale: 1, transition: { duration: 0.3 } },
-  exit: { opacity: 0, y: "-50%", scale: 0.9, transition: { duration: 0.2 } },
-};
-
-// Varianti per l'overlay sfondo
-const overlayVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.2 } },
-  exit: { opacity: 0, transition: { duration: 0.2 } },
+  hidden: { opacity: 0, y: "-50%", scale: 0.9 }, // Modal nascosto
+  visible: { opacity: 1, y: "0%", scale: 1, transition: { duration: 0.3 } }, // Animazione entrata
+  exit: { opacity: 0, y: "-50%", scale: 0.9, transition: { duration: 0.2 } }, // Animazione uscita
 };
 
 export default function CharacterModal({ character, onClose }: Props) {
   return (
     <AnimatePresence>
-      {/* Overlay con animazione */}
       <motion.div
         className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
-        variants={overlayVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
-        onClick={onClose} // Clic sullo sfondo chiude il modal
+        variants={modalVariants}
+        onClick={onClose}
       >
-        {/* Blocchiamo la propagazione del click per non chiudere cliccando il contenuto */}
         <motion.div
-          className="bg-white rounded-xl p-6 relative max-w-sm w-full shadow-lg flex flex-row items-start"
           onClick={(e) => e.stopPropagation()}
-          variants={modalVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
+          className="bg-white rounded-xl p-6 relative max-w-sm w-full shadow-lg flex flex-col items-center"
         >
-          <div className="mr-4 flex-shrink-0">
+          {/* FavoriteButton a sinistra */}
+          <div className="absolute top-2 left-2">
             <FavoriteButton character={character} className="text-4xl" />
           </div>
 
-          <div className="flex-1">
-            <img
-              src={character.images.main}
-              alt={character.name.first}
-              className="w-full h-48 object-contain"
-            />
-            <h2 className="text-xl font-bold mt-4">{`${character.name.first} ${character.name.last}`}</h2>
-            <p className="text-gray-600 italic mb-2">{character.sayings[0]}</p>
-            <p className="text-sm text-gray-500">
-              {character.name.first} {character.name.last}: {character.species}{" "}
-              – {character.occupation}
-            </p>
-          </div>
+          {/* Close button */}
           <button
             onClick={onClose}
-            className="top-2 right-2 text-gray-700 hover:text-red-500 text-3xl font-bold"
-            aria-label="Chiudi Modal"
+            className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-3xl font-bold"
+            aria-label="Close Modal"
           >
             &times;
           </button>
+
+          <img
+            src={character.images.main}
+            alt={character.name.first}
+            className="w-full h-48 object-contain"
+          />
+          <h2 className="text-xl font-bold mt-4">{`${character.name.first} ${character.name.last}`}</h2>
+          <p className="text-gray-600 italic mb-2">{character.sayings[0]}</p>
+          <p className="text-sm text-gray-500">
+            {character.species} – {character.occupation}
+          </p>
         </motion.div>
       </motion.div>
     </AnimatePresence>
