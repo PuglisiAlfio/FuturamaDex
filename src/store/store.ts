@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
 import favoritesReducer from "./favoriteSlice.ts"
-
+import themeReducer from "./themeSlice.ts"
 
 // Crea lo store Redux:
 // Qui registriamo tutti i reducer della nostra app
@@ -8,6 +8,7 @@ import favoritesReducer from "./favoriteSlice.ts"
 export const store = configureStore({
   reducer: {
     favorites: favoritesReducer,
+    theme: themeReducer,
   },
 });
 
