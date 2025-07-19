@@ -31,17 +31,19 @@ FuturamaDex è una webapp in **React + TypeScript** che consente di esplorare i 
 
 - `Card.tsx` – componente riutilizzabile per ogni personaggio
 - `CharacterModal.tsx` – modale con dettagli aggiuntivi (frase, immagine, bio)
+- `FavoriteButton.tsx` - bottone riutilizzabile per aggiungere  ai favoriti
 - Aggiunte animazioni fluide al modale tramite Framer Motion
+- Toggle button per tema dark/light
 
 ### Gestione dei Preferiti
 
-- Creato `FavoritesContext.tsx` con **Context API**
+- Gestione dei preferiti con Redux Toolkit per uno stato globale più scalabile e tipizzato.
 - Favoriti salvati in `localStorage` per persistenza
 - Integrazione dei pulsanti "aggiungi/rimuovi dai preferiti" nella `Card`
 - Creata pagina `Favorites.tsx` per mostrare solo i personaggi preferiti
 - Layout responsive anche nella pagina preferiti
 - Possibilità di rimuovere i preferiti direttamente dalla pagina
-- Aggiunta funzionalità di ricerca o filtro
+- Aggiunta funzionalità di ricerca
 
 ---
 
