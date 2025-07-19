@@ -36,9 +36,9 @@ export default function SearchBar({ characters }: Props) {
       {/* Toggle button */}
       <button
         onClick={toggleSidebar}
-        className={`fixed top-0 left-0 z-40 text-[#ffbb38] ease-in-out duration-500
+        className={`fixed top-0 right-0 z-40 text-[#ffbb38] dark:text-slate-800 ease-in-out duration-500
         transform
-        ${isOpen ? "translate-x-72" : "translate-x-0"}
+        ${isOpen ? "-translate-x-72" : "translate-x-0"}
       `}
       >
         {!isOpen ? (
@@ -48,7 +48,7 @@ export default function SearchBar({ characters }: Props) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="h-14 w-14 bg-[#1c1c1c] hover:bg-[#2a2a2a] cursor-pointer rounded-tr-md rounded-br-md p-3"
+            className="h-14 w-14 bg-gray-900 hover:bg-gray-800 cursor-pointer rounded-tl-md rounded-bl-md p-3 dark:bg-gray-400 dark:hover:bg-gray-200"
           >
             <path
               strokeLinecap="round"
@@ -63,7 +63,7 @@ export default function SearchBar({ characters }: Props) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="h-14 w-14 bg-[#1c1c1c] hover:bg-[#2a2a2a] cursor-pointer rounded-tr-md rounded-br-md p-3"
+            className="h-14 w-14 bg-gray-900 hover:bg-gray-800 cursor-pointer rounded-tl-md rounded-bl-md p-3 dark:bg-gray-400 dark:hover:bg-gray-200"
           >
             <path
               strokeLinecap="round"
@@ -74,23 +74,24 @@ export default function SearchBar({ characters }: Props) {
         )}
       </button>
 
+
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-72 flex flex-col space-y-2 border border-transparent bg-[#1c1c1c] p-2 text-white transition-transform duration-500 ease-in-out ${
-          isOpen ? "translate-x-0 z-30" : "-translate-x-full z-0"
-        }`}
+        className={`fixed top-0 right-0 h-full w-72 flex flex-col bg-gray-900 p-2 text-white transition-transform duration-500 ease-in-out dark:bg-gray-400  ${
+    isOpen ? "translate-x-0 z-30" : "translate-x-full z-0"
+  }`}
       >
         <div className="flex items-center mb-5">
-          <label className="mr-3">Cerca:</label>
+          <label className="mr-3 dark:text-slate-800">Cerca:</label>
           <input
             type="text"
-            className="bg-transparent p-1 rounded-lg border border-gray-400 w-[60%]"
+            className="bg-transparent p-1 rounded-lg border border-gray-600 w-[60%] dark:text-slate-800"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
-        <div className="flex items-center space-x-1 px-2 py-3 text-white">
+        <div className="flex items-center space-x-1 px-2 py-3 text-white dark:text-slate-800">
           <span>Personaggi trovati - {filtered.length}</span>
         </div>
 
@@ -98,7 +99,7 @@ export default function SearchBar({ characters }: Props) {
           {filtered.map((char) => (
             <div
               key={char.id}
-              className="flex items-center h-20 gap-5 text-slate-200 hover:bg-[#2a2a2a] cursor-pointer rounded-md px-2"
+              className="flex items-center h-20 gap-5 text-slate-200 hover:bg-gray-800 cursor-pointer rounded-md px-2 dark:text-slate-800 dark:hover:bg-gray-200"
               onClick={() => openModal(char)}
             >
               <img
