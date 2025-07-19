@@ -78,7 +78,7 @@ export default function SearchBar({ characters }: Props) {
       {/* Sidebar */}
       <aside
         className={`fixed top-0 right-0 h-full w-72 flex flex-col bg-gray-900 p-2 text-white transition-transform duration-500 ease-in-out dark:bg-gray-400  ${
-    isOpen ? "translate-x-0 z-30" : "translate-x-full z-0"
+    isOpen ? "translate-x-0 z-30" : "translate-x-full z-30"
   }`}
       >
         <div className="flex items-center mb-5">
