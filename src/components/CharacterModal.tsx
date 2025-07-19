@@ -24,9 +24,10 @@ export default function CharacterModal({ character, onClose }: Props) {
         variants={modalVariants}
         onClick={onClose}
       >
+        {/*Card Modal*/}
         <motion.div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white rounded-xl p-6 relative max-w-sm w-full shadow-lg flex flex-col items-center"
+          className="bg-gray-400 dark:bg-gray-900 rounded-xl p-6 relative max-w-sm w-full shadow-lg flex flex-col items-center"
         >
           {/* FavoriteButton a sinistra */}
           <div className="absolute top-2 left-2">
@@ -36,7 +37,7 @@ export default function CharacterModal({ character, onClose }: Props) {
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-3xl font-bold"
+            className="absolute top-2 right-2 text-gray-800 dark:text-amber-200 hover:text-red-500 text-3xl font-bold"
             aria-label="Close Modal"
           >
             &times;
@@ -47,9 +48,9 @@ export default function CharacterModal({ character, onClose }: Props) {
             alt={character.name.first}
             className="w-full h-48 object-contain"
           />
-          <h2 className="text-xl font-bold mt-4">{`${character.name.first} ${character.name.last}`}</h2>
-          <p className="text-gray-600 italic mb-2">{character.sayings[0]}</p>
-          <p className="text-sm text-gray-500">
+          <h2 className="text-xl font-bold mt-4 text-gray-800 dark:text-amber-200">{`${character.name.first} ${character.name.last}`}</h2>
+          <p className="text-gray-800 dark:text-amber-200 italic mb-2">{character.sayings[0]}</p>
+          <p className="text-sm text-gray-800 dark:text-amber-200">
             {character.species} – {character.occupation}
           </p>
         </motion.div>

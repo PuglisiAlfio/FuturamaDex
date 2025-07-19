@@ -48,7 +48,7 @@ export default function SearchBar({ characters }: Props) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="h-14 w-14 bg-gray-900 hover:bg-gray-800 cursor-pointer rounded-tl-md rounded-bl-md p-3 dark:bg-gray-400 dark:hover:bg-gray-200"
+            className="h-18 w-18 bg-gray-900 hover:bg-gray-800 cursor-pointer rounded-tl-md rounded-bl-md p-4 dark:bg-gray-400 dark:hover:bg-gray-200"
           >
             <path
               strokeLinecap="round"
@@ -63,7 +63,7 @@ export default function SearchBar({ characters }: Props) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="h-14 w-14 bg-gray-900 hover:bg-gray-800 cursor-pointer rounded-tl-md rounded-bl-md p-3 dark:bg-gray-400 dark:hover:bg-gray-200"
+            className="h-18 w-18 bg-gray-900 hover:bg-gray-800 cursor-pointer rounded-tl-md rounded-bl-md p-4 dark:bg-gray-400 dark:hover:bg-gray-200"
           >
             <path
               strokeLinecap="round"

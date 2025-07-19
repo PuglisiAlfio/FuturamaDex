@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <main className="p-4 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <main className="p-4 bg-gray-300 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
         <AppRoutes />
       </main>
     </BrowserRouter>
